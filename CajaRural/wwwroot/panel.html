@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caja Rural – Panel</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pagina-panel">
+
+  <main class="tarjeta">
+    <span class="chip chip-verde">Sesión iniciada</span>
+    <h1 id="saludo">Bienvenido</h1>
+    <p id="rol">Cargando datos de la sesión…</p>
+    <p>Esta es una pantalla temporal. Aquí irá el panel de control de cada rol.</p>
+    <button class="boton-secundario" id="salir">Cerrar sesión</button>
+  </main>
+
+  <script src="js/puente.js"></script>
+  <script>
+    Puente.escuchar(r => {
+      if (r.accion !== 'sesion') return;
+      document.getElementById('saludo').textContent = 'Bienvenido, ' + r.usuario;
+      document.getElementById('rol').textContent = 'Rol: ' + r.rol;
+    });
+    Puente.enviar({ accion: 'sesion' });
+
+    document.getElementById('salir').addEventListener('click', () => Puente.enviar({ accion: 'logout' }));
+  </script>
+</body>
+</html>
