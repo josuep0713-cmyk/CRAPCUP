@@ -1,0 +1,115 @@
+/* ============================================================
+   ESTILOS DE CAJA RURAL
+   Todo el diseño sale de las variables de abajo: cambia un color
+   aquí y cambia en todas las pantallas.
+   ============================================================ */
+:root {
+  --fondo:          #e9eef5;   /* fondo de la ventana */
+  --tarjeta:        #ffffff;   /* fondo de la tarjeta */
+  --texto:          #1b2437;   /* texto principal */
+  --texto-suave:    #5d6b82;   /* textos secundarios */
+  --borde:          #e3e7ef;
+  --entrada:        #f0f0fb;   /* fondo de los campos */
+  --marino:         #283046;   /* botón de rol seleccionado */
+  --verde:          #0b6623;   /* color principal de la marca */
+  --verde-oscuro:   #08501b;
+  --verde-claro:    #dff3e4;
+  --azul-chip:      #dfe6fb;
+  --azul-chip-texto:#3c4f8f;
+  --error:          #b42318;
+  --radio:          12px;
+  --fuente: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  font-size: 14px;
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+/* ---------- Pantalla de login ---------- */
+.pagina-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.tarjeta {
+  width: 100%;
+  max-width: 420px;
+  background: var(--tarjeta);
+  border-radius: 18px;
+  padding: 28px 28px 32px;
+  box-shadow: 0 10px 30px rgba(27, 36, 55, .10);
+}
+
+/* Marca (logo + nombre) */
+.marca { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; border-bottom: 1px solid var(--borde); margin-bottom: 18px; }
+.marca-icono { width: 48px; height: 48px; border-radius: 12px; background: var(--verde); display: grid; place-items: center; flex-shrink: 0; }
+.marca-icono svg { width: 28px; height: 28px; }
+.marca-titulo { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.marca-sub { font-size: 12px; color: var(--texto-suave); font-weight: 600; margin-top: 2px; }
+
+/* Etiquetas pequeñas (chips) */
+.chip { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; letter-spacing: .02em; }
+.chip-verde { background: var(--verde-claro); color: var(--verde); border: 1px solid #b9e3c3; }
+.chip-azul  { background: var(--azul-chip); color: var(--azul-chip-texto); }
+
+h1 { margin: 10px 0 20px; font-size: 28px; line-height: 1.15; font-weight: 800; }
+
+/* ---------- Formulario ---------- */
+.campo { border: 0; margin: 0 0 16px; padding: 0; }
+.etiqueta { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--texto); padding: 0; margin-bottom: 8px; }
+.etiqueta svg { width: 14px; height: 14px; color: var(--verde); }
+.fila-etiqueta { display: flex; justify-content: space-between; align-items: center; }
+.fila-etiqueta a { font-size: 11px; font-weight: 700; color: var(--verde); text-decoration: none; margin-bottom: 8px; }
+.fila-etiqueta a:hover { text-decoration: underline; }
+
+/* Selector de rol (3 botones) */
+.segmentos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--entrada); border-radius: var(--radio); padding: 4px; }
+.segmentos input { position: absolute; opacity: 0; pointer-events: none; }
+.segmentos label {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 6px; border-radius: 9px; cursor: pointer;
+  font-size: 12px; font-weight: 600; color: var(--texto-suave); transition: background .15s, color .15s;
+}
+.segmentos label svg { width: 14px; height: 14px; }
+.segmentos input:checked + label { background: var(--marino); color: #fff; }
+.segmentos input:focus-visible + label { outline: 2px solid var(--verde); outline-offset: 1px; }
+
+/* Campos de texto con ícono */
+.entrada { display: flex; align-items: center; gap: 10px; background: var(--entrada); border-radius: var(--radio); padding: 0 14px; border: 2px solid transparent; transition: border-color .15s; }
+.entrada:focus-within { border-color: var(--verde); }
+.entrada > svg { width: 18px; height: 18px; color: var(--texto-suave); flex-shrink: 0; }
+.entrada input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 14px 0; font: inherit; font-size: 14px; color: var(--texto); outline: none; }
+.entrada button { border: 0; background: none; cursor: pointer; color: var(--texto-suave); padding: 4px; display: grid; place-items: center; }
+.entrada button svg { width: 18px; height: 18px; }
+
+/* Mensaje de error */
+.mensaje { min-height: 20px; margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--error); }
+
+/* Botón principal */
+.boton-primario {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+  border: 0; border-radius: var(--radio); padding: 15px; cursor: pointer;
+  background: var(--verde); color: #fff; font: inherit; font-size: 15px; font-weight: 700;
+  box-shadow: 0 4px 10px rgba(11, 102, 35, .25); transition: background .15s;
+}
+.boton-primario:hover { background: var(--verde-oscuro); }
+.boton-primario:disabled { opacity: .6; cursor: wait; }
+.boton-primario svg { width: 18px; height: 18px; }
+
+/* ---------- Panel (pantalla temporal) ---------- */
+.pagina-panel { padding: 32px; }
+.pagina-panel .tarjeta { max-width: 560px; margin: 0 auto; }
+.pagina-panel h1 { font-size: 24px; }
+.pagina-panel p { color: var(--texto-suave); }
+.boton-secundario { border: 1px solid var(--borde); background: #fff; color: var(--texto); border-radius: var(--radio); padding: 10px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+.boton-secundario:hover { background: var(--entrada); }
