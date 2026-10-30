@@ -1,0 +1,29 @@
+using System.Text.Json;
+
+namespace CajaRural.Modulos;
+
+// MÓDULO DE PRÉSTAMOS
+// Responsable: (escribe aquí tu nombre)
+// Aquí va la lógica: validaciones, consultas a la base de datos y reglas del negocio.
+// Pantalla: wwwroot/modulos/prestamos/prestamos.html y prestamos.js
+public class ModuloPrestamos : IModulo
+{
+    public string Nombre => "prestamos";
+    public string Titulo => "Préstamos";
+    public string Icono => "📝";
+    public int Orden => 5;
+    public string[] Roles => new[] { "Administrador", "Secretaria" };
+
+    public object? Ejecutar(string accion, JsonElement datos)
+    {
+        switch (accion)
+        {
+            // Ejemplo:
+            // case "listar":
+            //     return Db.Tabla("SELECT ... AS nombre FROM ...");
+
+            default:
+                throw new ErrorNegocio("Acción no válida.");
+        }
+    }
+}
